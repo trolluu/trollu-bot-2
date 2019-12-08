@@ -1,4 +1,4 @@
-const { Client, RichEmbed } = require("discord.js");
+const Discord = require("discord.js");
 //const Discord = require("discord.js");
 const client = new Discord.Client();
 const token = process.env.token;
@@ -7,9 +7,9 @@ const active = new Map();
 
 const prefix = 'tm';
 
-const client = new Client({
-    disableEveryone: true
-});
+// const client = new Client({
+//     disableEveryone: true
+// });
 
 
 // client.on("ready", () => {
