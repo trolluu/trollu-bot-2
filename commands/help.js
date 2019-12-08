@@ -5,8 +5,8 @@ module.exports.run = async (bot, message, args) => {
     .setDescription("Help menu")
     .setColor("RANDOM")
     .addField("Commands:", "( help, play, pause, resume, skip, leave, queue, volume )")
-    .setFooter(member.displayName, member.user.displayAvatarURL)
-    .setThumbnail(member.user.displayAvatarURL)
+    .setFooter(bot.displayName, bot.user.displayAvatarURL)
+    .setThumbnail(bot.user.displayAvatarURL)
     .setTimestamp();
 
     message.channel.send(embed);
