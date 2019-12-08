@@ -1,5 +1,6 @@
-const Discord = require("discord.js");
-//const client = new Discord.Client();
+const { Client, RichEmbed } = require("discord.js");
+//const Discord = require("discord.js");
+const client = new Discord.Client();
 const token = process.env.token;
 const ownerID = process.env.ownerID
 const active = new Map();
