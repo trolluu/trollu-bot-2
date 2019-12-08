@@ -4,6 +4,8 @@ const client = new Discord.Client();
 const token = process.env.token;
 const ownerID = process.env.ownerID
 const active = new Map();
+let cooldown = new Set();
+let cdseconds = 5;
 
 const prefix = 'tm';
 
@@ -46,6 +48,14 @@ client.on("message", message => {
     if(message.author.bot) return;
     if(!message.content.startsWith(prefix)) return;
 
+    if(cooldown.has(message.author.id)) {
+        message.delete();
+        return message.reply("You have to wait 5 seconds between commands.").then(m => m.delete(5000))
+    }
+    if(!message.member.hasPermission("ADMINISTRATOR")) {
+        cooldown.add(message.author.id);
+    }
+
     try {
 
         delete require.cache[require.resolve(`./commands/${cmd}.js`)];
@@ -61,6 +71,12 @@ client.on("message", message => {
     }catch(e) {
         console.log(e.stack);
     }
+
+
+    setTimeout(() => {
+        cooldown.delete(message.author.id)
+    }, cdseconds * 1000)
+
 });
 
 //client.on('ready', () => console.log("Online!"));
