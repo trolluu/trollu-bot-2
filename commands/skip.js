@@ -1,8 +1,8 @@
 exports.run = async(client, message, args, ops) => {
     let fetched = ops.active.get(message.guild.id);
 
-    if(!fetched) return message.channel.send("There currently isn\'t any music playing in the guild!");
-    if(message.member.voiceChannel !== message.guild.me.voiceChannel) return message.channel.send("Sorry, you currently aren\'t in the same channel as the bot!");
+    if(!fetched) return message.channel.send("There currently isn\'t any music playing in the guild!").then(m => m.delete(5000));
+    if(message.member.voiceChannel !== message.guild.me.voiceChannel) return message.channel.send("Sorry, you currently aren\'t in the same channel as the bot!").then(m => m.delete(5000));
 
     let userCount = message.member.voiceChannel.members.size;
     let required = Math.ceil(userCount/2);
