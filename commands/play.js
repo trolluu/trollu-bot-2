@@ -1,8 +1,8 @@
 const ytdl = require("ytdl-core");
 
 exports.run = async (client, message, args, ops) => {
-    if(!message.member.voiceChannel) return message.channel.send("Please connect to a voice channel.");
-    if(!args[0]) return message.channel.send("Sorry, please input a url following the command.");
+    if(!message.member.voiceChannel) return message.channel.send("Please connect to a voice channel.").then(m => m.delete(5000));
+    if(!args[0]) return message.channel.send("Sorry, please input a url following the command.").then(m => m.delete(5000));
 
     let validate = await ytdl.validateURL(args[0]);
 
