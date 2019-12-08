@@ -2,7 +2,7 @@ const search = require("yt-search");
 
 exports.run = (client, message, args, ops) => {
     search(args.join(' '), function(err, res) {
-        if(err) return message.channel.send("Sorry, something went wrong.");
+        if(err) return message.channel.send("Sorry, something went wrong.").then(m => m.delete(5000));
 
         let videos = res.videos.slice(0, 10);
 
