@@ -1,7 +1,7 @@
 exports.run = async(client, message, args, ops) => {
     let fetched = ops.active.get(message.guild.id);
 
-    if(!fetched) return message.channel.send("There currently isn\'t any music playing in this guild!");
+    if(!fetched) return message.channel.send("There currently isn\'t any music playing in this guild!").then(m => m.delete(5000));
 
     let queue = fetched.queue;
     let nowPlaying = queue[0];
