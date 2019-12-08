@@ -3,20 +3,37 @@ const client = new Discord.Client();
 const token = process.env.token;
 const ownerID = process.env.ownerID
 const active = new Map();
+
 const prefix = 'm';
 
-
-
-client.on("ready", () => {
-    console.log(`${client.user.username}, online! on ${client.guilds.size} servers.`);
-    client.user.setPresence({
-        status: "idle",
-        game: {
-            name: "Jak słuchać muzyki 🔈 - ⛔ PRZERWA TECHNICZNA ⛔",
-            type: "WATCHING"
-        }
-    });
+const client = new Client({
+    disableEveryone: true
 });
+
+
+// client.on("ready", () => {
+//     console.log(`${client.user.username}, online! on ${client.guilds.size} servers.`);
+//     client.user.setPresence({
+//         status: "idle",
+//         game: {
+//             name: "Jak słuchać muzyki 🔈 - ⛔ PRZERWA TECHNICZNA ⛔",
+//             type: "WATCHING"
+//         }
+//     });
+// });
+
+
+client.on("ready", async () =>{
+    console.log(`${client.user.username}, online! on ${client.guilds.size} servers.`);
+    function changing_status() {
+        let status = ["| mhelp |", "| 🎶🎵 |", `| ${client.guilds.size} servers! |`, "| 🎄🎁 |"]
+        let randomStatus = status[Math.floor(Math.random() * status.length)]
+        client.user.setActivity(randomStatus, {type: 'WATCHING'});
+    }
+    setInterval(changing_status, 60000)
+});
+
+
 
 
 
