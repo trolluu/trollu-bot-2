@@ -4,7 +4,7 @@ const token = process.env.token;
 const ownerID = process.env.ownerID
 const active = new Map();
 
-const prefix = 'm';
+const prefix = 'tm';
 
 const client = new Client({
     disableEveryone: true
@@ -26,7 +26,7 @@ const client = new Client({
 client.on("ready", async () =>{
     console.log(`${client.user.username}, online! on ${client.guilds.size} servers.`);
     function changing_status() {
-        let status = ["| mhelp |", "| 🎶🎵 |", `| ${client.guilds.size} servers! |`, "| 🎄🎁 |"]
+        let status = ["| tmhelp |", "| 🎶🎵 |", `| ${client.guilds.size} servers! |`, "| 🎄🎁 |"]
         let randomStatus = status[Math.floor(Math.random() * status.length)]
         client.user.setActivity(randomStatus, {type: 'WATCHING'});
     }
